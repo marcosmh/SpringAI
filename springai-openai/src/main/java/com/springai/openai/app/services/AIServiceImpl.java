@@ -1,19 +1,19 @@
-package com.springai.openai.app.controllers;
+package com.springai.openai.app.services;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-public class IAController {
+@Service
+public class AIServiceImpl implements AIService {
 
     private final ChatClient chatClient;
 
-    public IAController(ChatClient.Builder chatClientBuilder) {
+
+    public AIServiceImpl(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder.build();
     }
 
-    @GetMapping("/greeting")
+    @Override
     public String greeting() {
         return this.chatClient
                 .prompt()
@@ -21,7 +21,4 @@ public class IAController {
                 .call()
                 .content();
     }
-
-    
 }
-
