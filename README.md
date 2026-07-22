@@ -8,7 +8,7 @@ Projects Spring AI
 * Host: MacBookPro9,2 (1.0)
 * Kernel: Linux 6.12.95+deb13-amd64
 * CPU: Intel(R) Core(TM) i5-3210M (4) @ 3.10 GHz
-* Java 15
+* Java 25
 * Maven 3.9.16
 * Spring Boot 4.1.0
 * Spring IA
