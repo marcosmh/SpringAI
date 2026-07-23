@@ -14,11 +14,19 @@ public class AIServiceImpl implements AIService {
     }
 
     @Override
-    public String greeting() {
+    public String greeting(String name) {
         return this.chatClient
                 .prompt()
                 .system("Responde siempre en Aleman y en una sola linea")
-                .user("Dime hola mundo, con mi nombre MarkCode.")
+                .user("Dime hola mundo, con mi nombre %s".formatted(name))
+                .call()
+                .content();
+    }
+
+    @Override
+    public String chat(String prompt) {
+        return chatClient
+                .prompt(prompt)
                 .call()
                 .content();
     }

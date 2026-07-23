@@ -2,8 +2,7 @@ package com.springai.openai.app.controllers;
 
 import com.springai.openai.app.services.AIService;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AIController {
@@ -15,8 +14,13 @@ public class AIController {
     }
 
     @GetMapping("/greeting")
-    public String greeting() {
-        return aiService.greeting();
+    public String greeting(@RequestParam(defaultValue = "MarkCode") String name) {
+        return aiService.greeting(name);
+    }
+
+    @PostMapping("/chat")
+    public String chat(@RequestBody String prompt) {
+        return aiService.chat(prompt);
     }
 
     

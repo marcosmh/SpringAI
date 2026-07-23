@@ -3,3 +3,26 @@
 
 GET {{baseUrl}}/greeting
 Content-Type: {{contentType}}
+
+GET {{baseUrl}}/greeting?name=DarkCode
+Content-Type: {{contentType}}
+
+GET {{baseUrl}}/chat?prompt=Que es Spring Boot y para que sirve
+Content-Type: {{contentType}}
+
+GET {{baseUrl}}/chat?prompt=Explicame Api Rest como si tuviera 8 años
+Content-Type: {{contentType}}
+
+GET {{baseUrl}}/chat?prompt=Explicame Api Rest como si fuera un junior en Java
+Content-Type: {{contentType}}
+
+POST {{baseUrl}}/chat?prompt=Diferencias entre monolitos y microservicos
+Content-Type: {{contentType}}
+
+POST {{baseUrl}}/chat
+Content-Type: text/plain
+¿Cuáles son las ventajas de usar microservicios sobre un monolito?
+
+POST {{baseUrl}}/chat
+Content-Type: text/plain
+Diferencias entre Docker y Kubernetes en pocas palabras
