@@ -23,6 +23,18 @@ POST {{baseUrl}}/chat
 Content-Type: text/plain
 ¿Cuáles son las ventajas de usar microservicios sobre un monolito?
 
-POST {{baseUrl}}/chat
+POST {{baseUrl}}/chat-expert
 Content-Type: text/plain
 Diferencias entre Docker y Kubernetes en pocas palabras
+
+POST {{baseUrl}}/chat-expert
+Content-Type: text/plain
+Que es la inyeccion de depencias en Spring
+
+POST {{baseUrl}}/chat-expert
+Content-Type: text/plain
+Explica que es un bean de spring
+
+POST {{baseUrl}}/chat-expert
+Content-Type: text/plain
+Que es JPA, para que se usa y como se usa en una app de Spring

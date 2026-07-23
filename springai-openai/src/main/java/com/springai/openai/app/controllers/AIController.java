@@ -23,6 +23,10 @@ public class AIController {
         return aiService.chat(prompt);
     }
 
-    
+    @PostMapping("/chat-expert")
+    public String chatExpert(@RequestBody String prompt) {
+        return aiService.chat(prompt);
+    }
+
 }
 

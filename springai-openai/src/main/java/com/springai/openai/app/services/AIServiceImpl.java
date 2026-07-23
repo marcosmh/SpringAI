@@ -26,8 +26,20 @@ public class AIServiceImpl implements AIService {
     @Override
     public String chat(String prompt) {
         return chatClient
-                .prompt(prompt)
+                .prompt()
+                .user(prompt)
                 .call()
                 .content();
+    }
+
+    @Override
+    public String chatExpertSpring(String prompt) {
+        return chatClient
+                .prompt()
+                .system("Eres un experto en Java y Spring Boot. Responde de forma clara y simple")
+                .user(prompt)
+                .call()
+                .content();
+
     }
 }
