@@ -17,7 +17,8 @@ public class AIServiceImpl implements AIService {
     public String greeting() {
         return this.chatClient
                 .prompt()
-                .user("Dime hola mundo en frances, con mi nombre imarkcode una sola linea.")
+                .system("Responde siempre en Aleman y en una sola linea")
+                .user("Dime hola mundo, con mi nombre MarkCode.")
                 .call()
                 .content();
     }
