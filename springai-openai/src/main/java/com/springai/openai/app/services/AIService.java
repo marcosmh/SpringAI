@@ -1,5 +1,8 @@
 package com.springai.openai.app.services;
 
+import com.springai.openai.app.models.CodeDto;
+import com.springai.openai.app.models.Requirement;
+
 public interface AIService {
 
     String greeting(String name);
@@ -7,4 +10,8 @@ public interface AIService {
     String chat(String prompt);
 
     String chatExpertSpring(String prompt);
+
+    CodeDto generateCode(Requirement requirement);
+
+
 }

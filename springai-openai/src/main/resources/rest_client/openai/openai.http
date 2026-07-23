@@ -54,3 +54,11 @@ POST {{baseUrl}}/chat-expert
 Content-Type: text/plain
 
 Que es JPA, para que se usa y como se usa en una app de Spring
+
+###
+POST {{baseUrl}}/generate-code
+Content-Type: {{contentType}}
+
+{
+    "requirement": "Crea una Clase User con id, name, email, createdAt, updateAt, usanso JPA"
+}

@@ -1,5 +1,7 @@
 package com.springai.openai.app.services;
 
+import com.springai.openai.app.models.CodeDto;
+import com.springai.openai.app.models.Requirement;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +43,18 @@ public class AIServiceImpl implements AIService {
                 .call()
                 .content();
 
+    }
+
+    @Override
+    public CodeDto generateCode(Requirement requirement) {
+        String code =chatClient
+                .prompt()
+                .system("Eres un Experto Desarrollador Senior en Java, Jakarta y Spring Boot 4, con buenas practicas"
+                + "Responde solo preguntas o requirimientos relacionados con Java y Spring Boot 4, pero nada mas, ningun otro lenguaje ni contexto, solo programacion Java")
+                .user(requirement.requirement())
+                .call()
+                .content();
+
+        return new CodeDto(code);
     }
 }

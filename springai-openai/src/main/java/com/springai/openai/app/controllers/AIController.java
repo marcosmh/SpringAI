@@ -1,5 +1,7 @@
 package com.springai.openai.app.controllers;
 
+import com.springai.openai.app.models.CodeDto;
+import com.springai.openai.app.models.Requirement;
 import com.springai.openai.app.services.AIService;
 
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,11 @@ public class AIController {
     @PostMapping("/chat-expert")
     public String chatExpert(@RequestBody String prompt) {
         return aiService.chat(prompt);
+    }
+
+    @PostMapping("/generate-code")
+    public CodeDto generateCode(@RequestBody Requirement requirement) {
+        return aiService.generateCode(requirement);
     }
 
 }
