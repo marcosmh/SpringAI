@@ -49,8 +49,11 @@ public class AIServiceImpl implements AIService {
     public CodeDto generateCode(Requirement requirement) {
         String code =chatClient
                 .prompt()
-                .system("Eres un Experto Desarrollador Senior en Java, Jakarta y Spring Boot 4, con buenas practicas"
-                + "Responde solo preguntas o requirimientos relacionados con Java y Spring Boot 4, pero nada mas, ningun otro lenguaje ni contexto, solo programacion Java")
+                .system(""" 
+                  Eres un Experto Desarrollador Senior en Java, Jakarta y Spring Boot 4.
+                  Con buenas practicas responde solo preguntas o requirimientos relacionados con Java y Spring Boot 4. 
+                  Pero nada mas, ningun otro lenguaje ni contexto, solo programacion Java
+                  """)
                 .user(requirement.requirement())
                 .call()
                 .content();
