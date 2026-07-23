@@ -3,7 +3,10 @@ package com.springai.openai.app.services;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class AIServiceImpl implements AIService {
@@ -47,7 +50,7 @@ public class AIServiceImpl implements AIService {
 
     @Override
     public CodeDto generateCode(Requirement requirement) {
-        String code =chatClient
+        String code = chatClient
                 .prompt()
                 .system(""" 
                   Eres un Experto Desarrollador Senior en Java, Jakarta y Spring Boot 4.
@@ -59,5 +62,23 @@ public class AIServiceImpl implements AIService {
                 .content();
 
         return new CodeDto(code);
+    }
+
+    @Override
+    public String explain(String code) {
+
+        String promptSystem = """
+                        Eres un Profesor experto en programacion.
+                        Explica paso a paso de forma sencilla.
+                        """;
+        PromptTemplate promptTemplate = new PromptTemplate("Explica el codigo linea por linea: {code}");
+        String userPrompt = promptTemplate.render(Map.of("code",code));
+
+        return chatClient
+                .prompt()
+                .system(promptSystem)
+                .user(userPrompt)
+                .call()
+                .content();
     }
 }

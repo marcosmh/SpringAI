@@ -35,5 +35,10 @@ public class AIController {
         return aiService.generateCode(requirement);
     }
 
+    @PostMapping("/explain-code")
+    public String explainCode(@RequestBody String code) {
+        return aiService.explain(code);
+    }
+
 }
 
