@@ -69,5 +69,10 @@ public class AIController {
         return aiService.explainCodeX(code);
     }
 
+    @PostMapping("/architech-expert")
+    public ArchitechExpertDto architechExpert(@RequestBody String prompt) {
+        return aiService.architechExpert(prompt);
+    }
+
 }
 

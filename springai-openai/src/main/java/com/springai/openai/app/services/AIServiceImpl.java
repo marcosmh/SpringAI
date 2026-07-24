@@ -224,4 +224,21 @@ public class AIServiceImpl implements AIService {
                 .entity(ExplainCodeDto.class);
 
     }
+
+    @Override
+    public ArchitechExpertDto architechExpert(String prompt) {
+        String promptSystem = """
+                Eres un experto Arquitecto de Software en Microservicios, Spring Boot y
+                Arquitectura de Sistemas.
+                Devuelve solo JSON validdo.
+                Responde en este formato json usando el DTO ArchitechExpertDto.
+                """;
+
+        return chatClient
+                .prompt()
+                .system(promptSystem)
+                .user(prompt)
+                .call()
+                .entity(ArchitechExpertDto.class);
+    }
 }

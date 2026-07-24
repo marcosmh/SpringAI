@@ -26,4 +26,6 @@ public interface AIService {
 
     ExplainCodeDto explainCodeX(String code);
 
+    ArchitechExpertDto architechExpert(String prompt);
+
 }
