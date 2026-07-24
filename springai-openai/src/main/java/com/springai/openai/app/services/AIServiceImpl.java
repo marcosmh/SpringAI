@@ -1,9 +1,6 @@
 package com.springai.openai.app.services;
 
-import com.springai.openai.app.models.CityInfoDto;
-import com.springai.openai.app.models.CodeDto;
-import com.springai.openai.app.models.Requirement;
-import com.springai.openai.app.models.TicketClasificationDto;
+import com.springai.openai.app.models.*;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
@@ -132,12 +129,12 @@ public class AIServiceImpl implements AIService {
                 """;
         String userPrompt = """
                 Resuelve la informacion en español de la ciudad %s con este formato:
-                {
-                    "city": "string",
-                    "country": "string",
-                    "population": number,
-                    "description": "string"
-                }
+                    {
+                        "city": "string",
+                        "country": "string",
+                        "population": number,
+                        "description": "string"
+                    }
                 """.formatted(city);
 
         return chatClient
@@ -178,5 +175,28 @@ public class AIServiceImpl implements AIService {
                 .user(textUser)
                 .call()
                 .entity(TicketClasificationDto.class);
+    }
+
+    @Override
+    public CodeTypedDto generateCodeTyped(Requirement requirement) {
+
+        String textSystem = """
+                Eres un Experto Desarrollador Senior en Java, Spring Boot 4.
+                Con buenas practicas de programación
+                """;
+        String textUser = """
+                 Responde en este formato json usando el DTO CodeTypedDto.
+                 
+                 Texto:
+                 %s
+                 
+                """.formatted(requirement.requirement());
+
+        return chatClient
+                .prompt()
+                .system(textSystem)
+                .user(textUser)
+                .call()
+                .entity(CodeTypedDto.class);
     }
 }

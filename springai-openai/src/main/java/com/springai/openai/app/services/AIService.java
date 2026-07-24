@@ -1,9 +1,6 @@
 package com.springai.openai.app.services;
 
-import com.springai.openai.app.models.CityInfoDto;
-import com.springai.openai.app.models.CodeDto;
-import com.springai.openai.app.models.Requirement;
-import com.springai.openai.app.models.TicketClasificationDto;
+import com.springai.openai.app.models.*;
 
 public interface AIService {
 
@@ -24,5 +21,7 @@ public interface AIService {
     CityInfoDto cityInfo(String city);
 
     TicketClasificationDto clasifyTyped(String text);
+
+    CodeTypedDto generateCodeTyped(Requirement requirement);
 
 }

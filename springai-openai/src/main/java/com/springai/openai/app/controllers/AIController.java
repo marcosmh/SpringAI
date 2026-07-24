@@ -1,9 +1,6 @@
 package com.springai.openai.app.controllers;
 
-import com.springai.openai.app.models.CityInfoDto;
-import com.springai.openai.app.models.CodeDto;
-import com.springai.openai.app.models.Requirement;
-import com.springai.openai.app.models.TicketClasificationDto;
+import com.springai.openai.app.models.*;
 import com.springai.openai.app.services.AIService;
 
 import org.springframework.web.bind.annotation.*;
@@ -58,10 +55,14 @@ public class AIController {
     }
 
     @PostMapping("/clasify-typed")
-    TicketClasificationDto clasifyTyped(@RequestBody String text) {
+    public TicketClasificationDto clasifyTyped(@RequestBody String text) {
         return aiService.clasifyTyped(text);
     }
 
+    @PostMapping("/generate-code-typed")
+    public CodeTypedDto generateCodeTyped(@RequestBody Requirement requirement) {
+        return aiService.generateCodeTyped(requirement);
+    }
 
 }
 
