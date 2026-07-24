@@ -5,6 +5,8 @@ import com.springai.openai.app.services.AIService;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 public class AIController {
 
@@ -72,6 +74,11 @@ public class AIController {
     @PostMapping("/architech-expert")
     public ArchitechExpertDto architechExpert(@RequestBody String prompt) {
         return aiService.architechExpert(prompt);
+    }
+
+    @PostMapping("/chat-metadata")
+    public Map<String, Object> chatMetadata(@RequestBody String prompt) {
+        return aiService.chatMetadata(prompt);
     }
 
 }

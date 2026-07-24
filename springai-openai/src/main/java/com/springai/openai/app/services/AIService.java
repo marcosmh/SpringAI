@@ -2,6 +2,8 @@ package com.springai.openai.app.services;
 
 import com.springai.openai.app.models.*;
 
+import java.util.Map;
+
 public interface AIService {
 
     String greeting(String name);
@@ -27,5 +29,7 @@ public interface AIService {
     ExplainCodeDto explainCodeX(String code);
 
     ArchitechExpertDto architechExpert(String prompt);
+
+    Map<String, Object> chatMetadata(String prompt);
 
 }
