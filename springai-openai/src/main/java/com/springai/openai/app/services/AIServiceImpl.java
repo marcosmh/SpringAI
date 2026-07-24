@@ -1,5 +1,6 @@
 package com.springai.openai.app.services;
 
+import com.springai.openai.app.models.CityInfoDto;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
 import org.springframework.ai.chat.client.ChatClient;
@@ -122,7 +123,7 @@ public class AIServiceImpl implements AIService {
     }
 
     @Override
-    public String cityInfo(String city) {
+    public CityInfoDto cityInfo(String city) {
 
         String textPrompt = """
                 Eres un asistente experto en Geografia.
@@ -143,6 +144,6 @@ public class AIServiceImpl implements AIService {
                 .system(textPrompt)
                 .user(userPrompt)
                 .call()
-                .content();
+                .entity(CityInfoDto.class);
     }
 }

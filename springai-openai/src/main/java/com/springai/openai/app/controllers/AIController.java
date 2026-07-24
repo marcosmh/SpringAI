@@ -1,5 +1,6 @@
 package com.springai.openai.app.controllers;
 
+import com.springai.openai.app.models.CityInfoDto;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
 import com.springai.openai.app.services.AIService;
@@ -51,7 +52,7 @@ public class AIController {
     }
 
     @PostMapping("/city-info")
-    public String cityInfo(@RequestBody String city) {
+    public CityInfoDto cityInfo(@RequestBody String city) {
         return aiService.cityInfo(city);
     }
 

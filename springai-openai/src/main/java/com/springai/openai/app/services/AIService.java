@@ -1,5 +1,6 @@
 package com.springai.openai.app.services;
 
+import com.springai.openai.app.models.CityInfoDto;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
 
@@ -19,6 +20,6 @@ public interface AIService {
 
     String analyze(String text);
 
-    String cityInfo(String city);
+    CityInfoDto cityInfo(String city);
 
 }
