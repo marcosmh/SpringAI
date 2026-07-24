@@ -24,4 +24,6 @@ public interface AIService {
 
     CodeTypedDto generateCodeTyped(Requirement requirement);
 
+    ExplainCodeDto explainCodeX(String code);
+
 }

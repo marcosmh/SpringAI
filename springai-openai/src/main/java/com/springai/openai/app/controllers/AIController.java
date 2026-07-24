@@ -64,5 +64,10 @@ public class AIController {
         return aiService.generateCodeTyped(requirement);
     }
 
+    @PostMapping("/explain-code-x")
+    public ExplainCodeDto explainCodeX(@RequestBody String code) {
+        return aiService.explainCodeX(code);
+    }
+
 }
 

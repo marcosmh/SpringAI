@@ -199,4 +199,29 @@ public class AIServiceImpl implements AIService {
                 .call()
                 .entity(CodeTypedDto.class);
     }
+
+    @Override
+    public ExplainCodeDto explainCodeX(String code) {
+
+        String promptSystem = """
+                        Eres un Profesor experto en programacion.
+                        Explica paso a paso de forma sencilla.
+                        """;
+        PromptTemplate promptTemplate = new PromptTemplate("""
+        Explica el codigo linea por linea: {code}
+        Responde en este formato json usando el DTO ExplainCodeDto.
+        """);
+
+        String userPrompt = promptTemplate.render(Map.of("code",code));
+
+        IO.println(userPrompt);
+
+        return chatClient
+                .prompt()
+                .system(promptSystem)
+                .user(userPrompt)
+                .call()
+                .entity(ExplainCodeDto.class);
+
+    }
 }
