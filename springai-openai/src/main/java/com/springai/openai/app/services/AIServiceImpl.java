@@ -3,6 +3,7 @@ package com.springai.openai.app.services;
 import com.springai.openai.app.models.CityInfoDto;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
+import com.springai.openai.app.models.TicketClasificationDto;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
@@ -145,5 +146,37 @@ public class AIServiceImpl implements AIService {
                 .user(userPrompt)
                 .call()
                 .entity(CityInfoDto.class);
+    }
+
+    @Override
+    public TicketClasificationDto clasifyTyped(String text) {
+        String textSystem = """
+                Eres un sistema de clasificacion de tickets.
+                Responde solo en JSON valido.
+                """;
+        String textUser = """
+                Clasifica el siguiente texto en una catagoria y prioridad.
+                Categorias:
+                - Soporte
+                - Ventas
+                - Reclamo
+                
+                Formato:
+                {
+                  "category": "string",
+                  "reason": "string,
+                  "priority": number
+                }
+                
+                Texto:
+                 %s
+                """.formatted(text);
+
+        return chatClient
+                .prompt()
+                .system(textSystem)
+                .user(textUser)
+                .call()
+                .entity(TicketClasificationDto.class);
     }
 }

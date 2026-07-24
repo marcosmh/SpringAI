@@ -3,6 +3,7 @@ package com.springai.openai.app.services;
 import com.springai.openai.app.models.CityInfoDto;
 import com.springai.openai.app.models.CodeDto;
 import com.springai.openai.app.models.Requirement;
+import com.springai.openai.app.models.TicketClasificationDto;
 
 public interface AIService {
 
@@ -21,5 +22,7 @@ public interface AIService {
     String analyze(String text);
 
     CityInfoDto cityInfo(String city);
+
+    TicketClasificationDto clasifyTyped(String text);
 
 }
