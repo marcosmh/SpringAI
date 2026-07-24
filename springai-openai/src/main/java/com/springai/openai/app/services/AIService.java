@@ -17,5 +17,6 @@ public interface AIService {
 
     String chatFormat(String topic);
 
+    String analyze(String text);
 
 }
