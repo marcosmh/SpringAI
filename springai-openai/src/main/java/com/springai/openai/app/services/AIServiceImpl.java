@@ -206,10 +206,10 @@ public class AIServiceImpl implements AIService {
         String promptSystem = """
                         Eres un Profesor experto en programacion.
                         Explica paso a paso de forma sencilla.
+                        Responde en este formato json usando el DTO ExplainCodeDto.
                         """;
         PromptTemplate promptTemplate = new PromptTemplate("""
         Explica el codigo linea por linea: {code}
-        Responde en este formato json usando el DTO ExplainCodeDto.
         """);
 
         String userPrompt = promptTemplate.render(Map.of("code",code));
