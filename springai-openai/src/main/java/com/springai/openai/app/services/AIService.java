@@ -19,4 +19,6 @@ public interface AIService {
 
     String analyze(String text);
 
+    String cityInfo(String city);
+
 }

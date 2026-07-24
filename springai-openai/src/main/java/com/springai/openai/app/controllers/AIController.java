@@ -50,6 +50,10 @@ public class AIController {
         return aiService.analyze(text);
     }
 
+    @PostMapping("/city-info")
+    public String cityInfo(@RequestBody String city) {
+        return aiService.cityInfo(city);
+    }
 
 
 }
