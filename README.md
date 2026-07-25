@@ -2,7 +2,7 @@
 Projects Spring AI
 --
 
-## Entorno de tiempo de ejecución:
+## Runtime environment:
 
 * OS: Debian GNU/Linux 13 (trixie) x86_64
 * Host: MacBookPro9,2 (1.0)
@@ -24,7 +24,7 @@ Projects Spring AI
 
 * https://platform.openai.com/tokenizer
 
-## Projectos
+## Projects
 
 * springai-openai
 
