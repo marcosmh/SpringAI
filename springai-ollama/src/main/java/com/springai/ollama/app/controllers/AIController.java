@@ -1,0 +1,85 @@
+package com.springai.ollama.app.controllers;
+
+import com.springai.ollama.app.models.*;
+import com.springai.ollama.app.services.AIService;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+public class AIController {
+
+    private final AIService aiService;
+
+    public AIController(AIService aiService) {
+        this.aiService = aiService;
+    }
+
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(defaultValue = "MarkCode") String name) {
+        return aiService.greeting(name);
+    }
+
+    @PostMapping("/chat")
+    public String chat(@RequestBody String prompt) {
+        return aiService.chat(prompt);
+    }
+
+    @PostMapping("/chat-expert")
+    public String chatExpert(@RequestBody String prompt) {
+        return aiService.chat(prompt);
+    }
+
+    @PostMapping("/generate-code")
+    public CodeDto generateCode(@RequestBody Requirement requirement) {
+        return aiService.generateCode(requirement);
+    }
+
+    @PostMapping("/explain-code")
+    public String explainCode(@RequestBody String code) {
+        return aiService.explain(code);
+    }
+
+    @PostMapping("/chat-format")
+    public String chatFormat(@RequestBody String prompt) {
+        return aiService.chatFormat(prompt);
+    }
+
+    @PostMapping("/analyze-text")
+    public String analyzeText(@RequestBody String text) {
+        return aiService.analyze(text);
+    }
+
+    @PostMapping("/city-info")
+    public CityInfoDto cityInfo(@RequestBody String city) {
+        return aiService.cityInfo(city);
+    }
+
+    @PostMapping("/clasify-typed")
+    public TicketClasificationDto clasifyTyped(@RequestBody String text) {
+        return aiService.clasifyTyped(text);
+    }
+
+    @PostMapping("/generate-code-typed")
+    public CodeTypedDto generateCodeTyped(@RequestBody Requirement requirement) {
+        return aiService.generateCodeTyped(requirement);
+    }
+
+    @PostMapping("/explain-code-x")
+    public ExplainCodeDto explainCodeX(@RequestBody String code) {
+        return aiService.explainCodeX(code);
+    }
+
+    @PostMapping("/architech-expert")
+    public ArchitechExpertDto architechExpert(@RequestBody String prompt) {
+        return aiService.architechExpert(prompt);
+    }
+
+    @PostMapping("/chat-metadata")
+    public Map<String, Object> chatMetadata(@RequestBody String prompt) {
+        return aiService.chatMetadata(prompt);
+    }
+
+}
+

@@ -1,0 +1,35 @@
+package com.springai.ollama.app.services;
+
+import com.springai.ollama.app.models.*;
+
+import java.util.Map;
+
+public interface AIService {
+
+    String greeting(String name);
+
+    String chat(String prompt);
+
+    String chatExpertSpring(String prompt);
+
+    CodeDto generateCode(Requirement requirement);
+
+    String explain(String code);
+
+    String chatFormat(String topic);
+
+    String analyze(String text);
+
+    CityInfoDto cityInfo(String city);
+
+    TicketClasificationDto clasifyTyped(String text);
+
+    CodeTypedDto generateCodeTyped(Requirement requirement);
+
+    ExplainCodeDto explainCodeX(String code);
+
+    ArchitechExpertDto architechExpert(String prompt);
+
+    Map<String, Object> chatMetadata(String prompt);
+
+}
