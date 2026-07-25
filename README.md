@@ -23,3 +23,11 @@ Projects Spring AI
 ## Tokenizer
 
 * https://platform.openai.com/tokenizer
+
+## Projectos
+
+* springai-openai
+
+* springai-ollama
+
+
