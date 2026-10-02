@@ -68,5 +68,27 @@ POST {{baseUrl}}/generate-code
 Content-Type: {{contentType}}
 
 {
-    "requirement": "Crea una Clase User con id, name, email, createdAt, updateAt, usanso JPA"
+    "requirement": "Crea una Clase User con id, name, email, createdAt, updateAt, usando JPA y su repositorio"
 }
+
+###
+POST {{baseUrl}}/clasify-typed
+Content-Type: {{contentType}}
+
+Hola tengo un problema mi pago, me cobraron dos veces, es el colmo, estoy muy molesto.
+
+###
+POST {{baseUrl}}/explain-code-x
+Content-Type: {{contentType}}
+
+ @GetMapping("/chat-get")
+    public String chatGet(@RequestParam String prompt) {
+        return aiService.chat(prompt);
+    }
+
+
+###
+POST {{baseUrl}}/architech-expert
+Content-Type: {{contentType}}
+
+Explicame sobre microservicios con spring cloud y patron saga, y dame un detallito mas sobre se hace con el saga, ejemplo sobre idempotencia
