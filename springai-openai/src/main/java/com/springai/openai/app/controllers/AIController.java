@@ -21,8 +21,18 @@ public class AIController {
         return aiService.greeting(name);
     }
 
+    @GetMapping("/chat-get")
+    public String chatGet(@RequestParam String prompt) {
+        return aiService.chat(prompt);
+    }
+
     @PostMapping("/chat")
     public String chat(@RequestBody String prompt) {
+        return aiService.chat(prompt);
+    }
+
+    @PostMapping("/chat-param")
+    public String chatParam(@RequestParam String prompt) {
         return aiService.chat(prompt);
     }
 

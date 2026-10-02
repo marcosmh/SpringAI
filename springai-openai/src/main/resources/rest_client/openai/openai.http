@@ -10,20 +10,28 @@ GET {{baseUrl}}/greeting?name=DarkCode
 Content-Type: {{contentType}}
 
 ###
-GET {{baseUrl}}/chat?prompt=Que es Spring Boot y para que sirve
+GET {{baseUrl}}/chat-get?prompt=Que es Spring Boot y para que sirve
 Content-Type: {{contentType}}
 
 ###
-GET {{baseUrl}}/chat?prompt=Explicame Api Rest como si tuviera 8 años
+GET {{baseUrl}}/chat-get?prompt=Explicame Api Rest como si tuviera 8 años
 Content-Type: {{contentType}}
 
 ###
-GET {{baseUrl}}/chat?prompt=Explicame Api Rest como si fuera un junior en Java
+GET {{baseUrl}}/chat-get?prompt=Explicame Api Rest como si fuera un junior en Java
 Content-Type: {{contentType}}
 
 ###
-POST {{baseUrl}}/chat?prompt=Diferencias entre monolitos y microservicos
+POST {{baseUrl}}/chat-param?prompt=Diferencias entre monolitos y microservicos
 Content-Type: {{contentType}}
+
+###
+POST {{baseUrl}}/chat
+Content-Type: text/plain
+
+Diferencias entre monolitos y microservicios
+
+
 
 ###
 POST {{baseUrl}}/chat
@@ -60,5 +68,27 @@ POST {{baseUrl}}/generate-code
 Content-Type: {{contentType}}
 
 {
-    "requirement": "Crea una Clase User con id, name, email, createdAt, updateAt, usanso JPA"
+    "requirement": "Crea una Clase User con id, name, email, createdAt, updateAt, usando JPA y su repositorio"
 }
+
+###
+POST {{baseUrl}}/clasify-typed
+Content-Type: {{contentType}}
+
+Hola tengo un problema mi pago, me cobraron dos veces, es el colmo, estoy muy molesto.
+
+###
+POST {{baseUrl}}/explain-code-x
+Content-Type: {{contentType}}
+
+ @GetMapping("/chat-get")
+    public String chatGet(@RequestParam String prompt) {
+        return aiService.chat(prompt);
+    }
+
+
+###
+POST {{baseUrl}}/architech-expert
+Content-Type: {{contentType}}
+
+Explicame sobre microservicios con spring cloud y patron saga, y dame un detallito mas sobre se hace con el saga, ejemplo sobre idempotencia
