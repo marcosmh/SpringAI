@@ -1,0 +1,78 @@
+
+### Subir archivo PDF
+POST http://localhost:8080/index-upload/pdf
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="java_history.pdf"
+Content-Type: application/pdf
+
+< /home/imarkdev/azurita.pdf
+--WebAppBoundary--
+
+
+### Pregunta 1
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+que dice el documento sobre el creador de java
+
+### Pregunta 2
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+cuando fue el lanzamiento oficial?
+
+### Pregunta 3
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+que empresas usan java?
+
+### Pregunta 4
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+por que se le puso el nombre de oak inicialmente?
+
+### Pregunta 5
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+por que se le puso el nombre oak definitivo? pero fue el definitivo, o cual fue y porque?
+
+### Pregunta 6
+### Pregunta 6
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+y por que se le acuño el nombre de java?
+
+### Subir archivo PDF 2
+POST http://localhost:8080/index-upload/pdf
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="azurita.pdf"
+Content-Type: application/pdf
+
+< /home/imarkdev/azurita.pdf
+--WebAppBoundary--
+
+### Pregunta 7
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+como vestia azurita?
+
+### Pregunta 8
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+por que azurita decide desviarse del camino y que le sugiere el oso
+
+### Pregunta 9
+POST http://localhost:8080/rag/ask
+Content-Type: application/json
+
+que hace el oso cuando llega a la casa del abuelo

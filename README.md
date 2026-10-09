@@ -30,4 +30,39 @@ Projects Spring AI
 
 * springai-ollama
 
+## Docker
+
+### Install Postgres Vector
+* docker pull pgvector/pgvector:pg16-trixie
+
+* docker images
+
+* docker ps
+
+* sudo docker run -d --name postgres --restart always \
+  -p 5433:5432 \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=sasa47 \
+  -e POSTGRES_DB=spring_ia_rag \
+  pgvector/pgvector:pg16-trixie
+
+* docker logs postgres
+
+* docker exec -it postgres psql -U postgres -d spring_ia_rag
+
+* CREATE EXTENSION IF NOT EXISTS vector;
+
+* CREATE EXTENSION IF NOT EXISTS hstore;
+
+* CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+* select extname from pg_extension;
+
+## Ollama
+
+* ollama pull nomic-embed-text
+
+* ollama pull qwen3-embedding:0.6b
+
+* ollama pull mxbai-embed-large
 
