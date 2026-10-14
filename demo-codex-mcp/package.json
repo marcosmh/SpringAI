@@ -1,0 +1,16 @@
+{
+  "name": "nexo-analytics",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm --workspace @nexo/api run dev",
+    "dev:web": "npm --workspace @nexo/web run dev",
+    "db:push": "npm --workspace @nexo/api run db:push",
+    "db:seed": "npm --workspace @nexo/api run db:seed",
+    "db:setup": "npm --workspace @nexo/api run db:setup",
+    "build": "npm --workspace @nexo/web run build"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}

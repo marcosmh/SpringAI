@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <meta name="description" content="Dashboard para Spring AI Weather MCP: comparación de temperaturas y consultas al asistente." />
+    <title>Weather MCP — Spring AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const root = document.getElementById('root');
+      const showStartupError = (message) => {
+        if (root.childElementCount) return;
+        root.innerHTML = '<main style="max-width:620px;margin:12vh auto;padding:28px;font:14px system-ui;color:#28283c;background:#fff;border:1px solid #e8e8ef;border-radius:12px;box-shadow:0 12px 40px #25243a12"><h1 style="font-size:20px;margin:0 0 10px">No se pudo iniciar Weather MCP</h1><p style="color:#666a7a;line-height:1.5">El navegador encontró un error al cargar la aplicación React:</p><pre style="padding:12px;background:#f6f5fa;border-radius:7px;white-space:pre-wrap;overflow-wrap:anywhere;color:#b24747"></pre><p style="color:#777b8b">Revisa la terminal de <code>npm run dev</code> y recarga la página.</p></main>';
+        root.querySelector('pre').textContent = message;
+      };
+      addEventListener('error', (event) => showStartupError(event.message || event.target?.src || 'Error al cargar un recurso.'), true);
+      addEventListener('unhandledrejection', (event) => showStartupError(event.reason?.stack || event.reason?.message || String(event.reason)));
+      setTimeout(() => { if (!root.childElementCount) showStartupError('React no montó la interfaz. Comprueba la consola del navegador y que se sirvan /src/main.jsx y sus dependencias.'); }, 4000);
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model WeatherCity {
+  id             String         @id
+  name           String
+  country        String
+  temperatureC   Int
+  recommendation String
+  updatedAt      DateTime       @updatedAt
+  queries        WeatherQuery[]
+}
+
+model WeatherQuery {
+  id             Int         @id @default(autoincrement())
+  cityId         String
+  city           WeatherCity @relation(fields: [cityId], references: [id])
+  question       String
+  answer         String
+  temperatureC   Int
+  success        Boolean     @default(false)
+  latencyMs      Int?
+  askedAt        DateTime    @default(now())
+
+  @@index([cityId, askedAt])
+  @@index([askedAt])
+}

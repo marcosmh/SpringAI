@@ -24,6 +24,18 @@ Projects Spring AI
 
 * https://platform.openai.com/tokenizer
 
+## Install Ollama
+
+* curl -fsSL https://ollama.com/install.sh | sh
+
+* ollama --version
+* ollama list
+* ollama pull qwen3:4b
+* ollama list
+
+## Download Models qwen
+* ollama run qwen3:4b
+
 ## Projects
 
 * springai-openai
@@ -58,7 +70,7 @@ Projects Spring AI
 
 * select extname from pg_extension;
 
-## Ollama
+## Ollama Models
 
 * ollama pull nomic-embed-text
 
@@ -66,3 +78,46 @@ Projects Spring AI
 
 * ollama pull mxbai-embed-large
 
+## Install Codex CLI
+
+*  brew install --cask codex
+
+* npm install -g @openai/codex
+
+* codex mcp add weatherSpring --url http://localhost:8081/mcp
+
+* codex mcp list
+
+* nano .codex/config.toml 
+
+* codex mcp remove weatherSpring
+
+* codex mcp add weatherSpring -- java -jar /home/imarkdev/DevTraining/SpringAI/springai-mcp-stdio-server/target/springai-mcp-stdio-server-0.0.1-SNAPSHOT.jar
+
+
+# Claude Configuration
+
+* Configuration:
+  "mcpServers": {
+	  "spring-ai-weather": {
+	  "command": "wsl.exe",
+	  "args": [
+			"-d", "Debian",
+			"/opt/java/jdk-25.0.4.1/bin/java",
+			"-Dspring.ai.mcp.server.stdio=true",
+			"-Dspring.main.banner-mode=off",
+			"-Dlogging.level.root=OFF",
+			"-jar",
+			"/home/imarkdev/DevTraining/SpringAI/springai-mcp-stdio-server/target/springai-mcp-stdio-server-0.0.1-SNAPSHOT.jar"
+		  ]
+		}
+  },
+
+
+## Docs
+
+* https://docs.spring.io/spring-ai/reference/index.html
+
+* https://docs.ollama.com/
+
+* https://learn.chatgpt.com/docs/codex/cli

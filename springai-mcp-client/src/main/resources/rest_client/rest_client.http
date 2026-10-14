@@ -1,0 +1,11 @@
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+###
+GET {{baseUrl}}/api/weather/ask?question=Que temperatura hay en santiago y que ropa deberia usar hoy?
+Content-Type: {{contentType}}
+
+###
+GET {{baseUrl}}/api/weather/ask?question=Que temperatura hay en madrid y dame recomendaciones de que ropa usar
+Content-Type: {{contentType}}
+
