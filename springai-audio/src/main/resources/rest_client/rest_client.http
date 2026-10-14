@@ -1,0 +1,10 @@
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+### Generar imagen con GET
+GET {{baseUrl}}/api/tts?text=un gato programador en java frente a tres monitores
+Content-Type: {{contentType}}
+
+### Generar imagen con GET
+GET {{baseUrl}}/api/tts?text=Hola soy un Desarrollador Java y estoy programando con Spring AI
+Content-Type: {{contentType}}
