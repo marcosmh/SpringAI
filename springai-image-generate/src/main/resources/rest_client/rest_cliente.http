@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+### Generar imagen con GET
+GET {{baseUrl}}/api/images/generate?prompt=un%20programador%20en%20java%20frente%20a%20tres%20monitores
+Content-Type: {{contentType}}
+
+###
+GET {{baseUrl}}/api/images/generate?prompt=un gato programador en java frente a tres monitores
+Content-Type: {{contentType}}
+
+###
+GET {{baseUrl}}/api/images/generate?prompt=crea una imagen de java peleando con c#, donde java sea el ganador
+Content-Type: {{contentType}}
