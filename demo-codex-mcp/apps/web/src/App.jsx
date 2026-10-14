@@ -6,10 +6,10 @@ import {
 import {
   Activity, ArrowDown, ArrowRight, ArrowUp, Check, ChevronDown, ChevronLeft,
   ChevronRight, CircleHelp, Clock3, CloudSun, Database, MapPin, MessageCircle,
-  Search, Send, Sparkles, Thermometer, Wind, X,
+  Moon, Search, Send, Sparkles, Sun, Thermometer, Wind, X,
 } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:4000/api';
+const API = import.meta.env.VITE_API_URL || '/api';
 const colors = { santiago: '#7664f5', madrid: '#5696e8', 'buenos-aires': '#32b998', 'ciudad-de-mexico': '#f0a64d' };
 const number = (value, digits = 0) => new Intl.NumberFormat('es-MX', { maximumFractionDigits: digits }).format(value ?? 0);
 const dateTime = (value) => new Intl.DateTimeFormat('es-MX', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(value));
@@ -27,6 +27,7 @@ function App() {
   const [historySearch, setHistorySearch] = useState('');
   const [historyCity, setHistoryCity] = useState('');
   const [notice, setNotice] = useState('');
+  const [theme, setTheme] = useState(() => localStorage.getItem('weather-mcp-theme') || 'light');
 
   async function loadDashboard() {
     try {
@@ -49,6 +50,7 @@ function App() {
   }
   useEffect(() => { loadDashboard(); }, []);
   useEffect(() => { loadHistory(); }, [historyPage, historySearch, historyCity]);
+  useEffect(() => { localStorage.setItem('weather-mcp-theme', theme); }, [theme]);
 
   const cities = dashboard?.cities || [];
   const summary = dashboard?.summary;
@@ -68,7 +70,7 @@ function App() {
     finally { setAsking(false); }
   }
 
-  return <div className="weather-app">
+  return <div className={`weather-app ${theme === 'dark' ? 'theme-dark' : ''}`}>
     <aside className="weather-sidebar">
       <a href="#inicio" className="weather-brand"><span className="brand-mark"><CloudSun size={19} /></span><span>weather<span className="brand-accent">.mcp</span></span></a>
       <div className="project-card"><span className="project-icon"><Activity size={17} /></span><div><b>Spring AI Weather</b><small>Panel de herramientas MCP</small></div><ChevronDown size={15} /></div>
@@ -80,7 +82,7 @@ function App() {
     </aside>
 
     <main className="weather-main" id="inicio">
-      <header className="weather-topbar"><div className="top-crumb">MCP Workspace <span>/</span> <b>Weather analytics</b></div><div className="top-right"><span className="source-pill"><i />Fuente: Spring AI Weather MCP</span><span className="top-separator" /><span className="top-date">{new Intl.DateTimeFormat('es-MX', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date())}</span></div></header>
+      <header className="weather-topbar"><div className="top-crumb">MCP Workspace <span>/</span> <b>Weather analytics</b></div><div className="top-right"><button className="theme-toggle" type="button" title={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'} aria-label={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'} onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}<span>{theme === 'dark' ? 'Claro' : 'Oscuro'}</span></button><span className="source-pill"><i />Fuente: Spring AI Weather MCP</span><span className="top-separator" /><span className="top-date">{new Intl.DateTimeFormat('es-MX', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date())}</span></div></header>
       <div className="weather-content">
         <section className="weather-heading" id="resumen"><div><div className="weather-eyebrow"><span /> WEATHER INTELLIGENCE</div><h1>Clima de un vistazo</h1><p>Temperaturas y recomendaciones disponibles en tus herramientas Spring AI MCP.</p></div><button className="ask-button" onClick={() => { setAnswer(null); setQuestion(currentCity ? cityPrompt(currentCity) : question); document.getElementById('ask-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }}><Sparkles size={16} />Preguntar al asistente <ArrowRight size={15} /></button></section>
 

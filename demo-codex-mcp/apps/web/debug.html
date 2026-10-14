@@ -1,6 +1,0 @@
-<!doctype html><meta charset="utf-8"><title>Weather API check</title><pre id="out">Checking API…</pre><script type="module">
-try {
-  const response = await fetch('http://127.0.0.1:4000/api/weather/dashboard', { signal: AbortSignal.timeout(3000) });
-  document.getElementById('out').textContent = `${response.status}\n${await response.text()}`;
-} catch (error) { document.getElementById('out').textContent = `${error.name}: ${error.message}`; }
-</script>
